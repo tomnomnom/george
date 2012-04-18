@@ -1,6 +1,6 @@
 {
   "author": "Tom Hudson <mail@tomnomnom.com>",
-  "name": "George",
+  "name": "george",
   "description": "Debugging HTTP proxy",
   "version": "0.0.1",
   "main": "./george",
