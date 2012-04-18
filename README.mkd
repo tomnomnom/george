@@ -9,7 +9,7 @@ A really basic HTTP proxy written in node.js with hooks to let you re-write head
 
 ### Events
 * `request` - emitted before a request is made. A request object is the only argument.
-* `response` - emitted after a response is recieved, but before it is sent to the client. A response object is the only argument.
+* `response` - emitted after a response is received, but before it is sent to the client. A response object is the only argument.
 
 ## Examples
 
