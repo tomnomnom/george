@@ -1,0 +1,3 @@
+# George - HTTP debugging proxy
+
+A really basic HTTP proxy written in node.js with hooks to let you re-write headers on request and response.

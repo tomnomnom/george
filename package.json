@@ -1,0 +1,13 @@
+{
+  "author": "Tom Hudson <mail@tomnomnom.com>",
+  "name": "George",
+  "description": "Debugging HTTP proxy",
+  "version": "0.0.1",
+  "main": "./george",
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
