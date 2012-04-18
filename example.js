@@ -6,6 +6,10 @@ george.on('request', function(request){
 });
 
 george.on('response', function(response){
+  // Globally replace "monospace" with "sans-serif" in the response body
+  response.body = response.body.replace(/monospace/g, 'sans-serif');
+
+  // Change the content-type to be text/plain
   response.headers['content-type'] = 'text/plain';
 });
 

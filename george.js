@@ -20,9 +20,9 @@ var server = http.createServer(function(clientRequest, clientResponse) {
 
   proxyRequest.on('response', function (proxyResponse) {
 
-    var buffer = '';
+    proxyResponse.body = '';
     proxyResponse.on('data', function(chunk) {
-      buffer += chunk;
+      proxyResponse.body += chunk;
     });
 
     proxyResponse.on('end', function() {
@@ -30,8 +30,11 @@ var server = http.createServer(function(clientRequest, clientResponse) {
         fn(proxyResponse);
       });
 
+      // Set correct content-length to enable re-writing of content
+      proxyResponse.headers['content-length'] = proxyResponse.body.length;
+
       clientResponse.writeHead(proxyResponse.statusCode, proxyResponse.headers);
-      clientResponse.end(buffer);
+      clientResponse.end(proxyResponse.body);
     });
 
   });
