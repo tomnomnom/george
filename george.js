@@ -9,9 +9,13 @@ var urlRewrites = {};
 
 var server = http.createServer(function(clientRequest, clientResponse) {
 
+  // Request hooks
   callbacks.request.forEach(function(fn){
     fn(clientRequest);
   });
+
+  // For now we need to force identity encoding as gzip et al are not supported
+  clientRequest.headers['accept-encoding'] = 'identity';
 
   // TODO: regex match
   if (urlRewrites[clientRequest.url] != undefined){

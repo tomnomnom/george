@@ -1,6 +1,10 @@
-# George - HTTP debugging proxy
+# george - HTTP debugging proxy
 
 A really basic HTTP proxy written in node.js with hooks to let you re-write headers on request and response.
+
+## A word of warning
+If there were a greek letter before alpha then it would describe the state of george. If george was a real
+person he would randomly refuse to do perfectly reasonable tasks that you ask of him.
 
 ## Methods
 * `george.listen(port)` - start the proxy server listening on a port (default: 7070)
@@ -42,3 +46,4 @@ A more complex example:
 * There is currently no guarantee that callbacks run in time if they're async
 * Gzip et al is not supported
 * SSL isn't supported either
+* Non-text data is not support in general
