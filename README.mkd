@@ -2,6 +2,15 @@
 
 A really basic HTTP proxy written in node.js with hooks to let you re-write headers on request and response.
 
+## Methods
+* `george.listen(port)` - start the proxy server listening on a port (default: 7070)
+* `george.rewriteUrl(search, replace)` - rewrite requests from `search` to `replace`
+* `george.on(event, callback)` - bind a callback to an event
+
+### Events
+* `request` - emitted before a request is made. A request object is the only argument.
+* `response` - emitted after a response is recieved, but before it is sent to the client. A response object is the only argument.
+
 ## Examples
 
 The most basic usage:
@@ -30,5 +39,6 @@ A more complex example:
     george.listen(7070);
 
 ## Known issues
-* There is currently no guarantee that callbacks run in time; relying on things being quick (very bad)
-* SSL isn't supported
+* There is currently no guarantee that callbacks run in time if they're async
+* Gzip et al is not supported
+* SSL isn't supported either

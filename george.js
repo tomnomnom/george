@@ -5,11 +5,22 @@ var callbacks = {
   'response': []
 };
 
+var urlRewrites = {};
+
 var server = http.createServer(function(clientRequest, clientResponse) {
 
   callbacks.request.forEach(function(fn){
     fn(clientRequest);
   });
+
+  // TODO: regex match
+  if (urlRewrites[clientRequest.url] != undefined){
+    clientRequest.url = urlRewrites[clientRequest.url];
+
+    // Find the host portion of the new URL and use it to set the host header
+    var hostHeader = clientRequest.url.replace(/https?:\/\//, '').replace(/\/.*/, '');
+    clientRequest.headers.host = hostHeader;
+  }
 
   var proxy = http.createClient(80, clientRequest.headers.host);
   var proxyRequest = proxy.request(
@@ -54,5 +65,10 @@ exports.on = function(type, callback){
 exports.listen = function(port){
   port = port || 7070;
   server.listen(port);
+};
+
+// URL rewriting
+exports.rewriteUrl = function(search, replacement){
+  urlRewrites[search] = replacement;
 };
 

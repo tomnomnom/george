@@ -1,4 +1,4 @@
-var george = require('./george');
+var george = require('../george');
 
 // Log the URL being requested
 george.on('request', function(request){
